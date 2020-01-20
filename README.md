@@ -14,10 +14,14 @@
 
 ---
 
-#### 第一步: 使用 Angular CLI，用以下命令生成一个新库的骨架
+## 第一步: 使用 Angular CLI，用以下命令生成一个新库的骨架
+
 `ng new my-app --skip-install --style=scss --routing=false`
+
 `cd my-app`
+
 `ng generate library my-lib`
+
 `npm install`
 
 - 此时项目的结构如下图:
@@ -25,9 +29,10 @@
 ![Lib库的骨架](./doc/assets/新库的骨架.jpg)
 
 
-#### 第二步: 开发Lib库
+## 第二步: 开发Lib库
 
 - **宿主工程**中的`projects/my-lib`目录下, 是我们要开发的**Lib库**
+
 - **Lib库**的内容, 不是本文的重点, 但是为了功能的完整, 我们需要加入`assets`和`theme`两个文件夹, 其中分别放入**资源文件**和**全局样式文件**, 之后, 在`build`的时候会将它们一并打包
 
 ![开发Lib库](./doc/assets/开发Lib库_1.jpg)
@@ -38,9 +43,10 @@
 
 - 另外, **Lib库**中的`package.json`与**宿主工程**中的`package.json`没有任何关系
 
-#### 第三步: 打包Lib库并在宿主工程中使用
+## 第三步: 打包Lib库并在宿主工程中使用
 
 - 假设你的**Lib库**的核心代码已经写好, 我们开始**打包**
+
 - 在**宿主工程**的`package.json`的`scripts`中加入以下几个命令:
 
  ```js
@@ -67,16 +73,20 @@
 - 在**宿主工程**的**根目录**下执行`npm run package`, 此时会打包**Lib库**, 并安装到**宿主工程**中
 
 - 在**宿主工程**的`app.module.ts`中引入**Lib库**, 并在`app.component.html`中使用
+
 ![使用Lib库](./doc/assets/使用Lib库_1.jpg)
+
 - 现在在**宿主工程**中执行`ng serve -o` 启动程序, 你应该可以看到页面正常显示.
 ***但是*** ~~~ 引入**图片**和**全局样式** ~~~ **失败**
 
 ![现在的打包结果](./doc/assets/使用Lib库_2.png)
+
 ![期待的结果](./doc/assets/使用Lib库_3.png)
 
-#### 第四步: 打包资源文件和全局样式文件
+## 第四步: 打包资源文件和全局样式文件
 
 - **宿主工程**的`package.json`中的`scripts`修改如下:
+
 ```js
 "scripts": {
   ...
@@ -99,24 +109,28 @@
   ...
 }
 ```
-- 再次执行`npm run package`, **assets**和**theme**会打包到**Lib库**中
-- 但是如果你在**宿主工程**中执行`ng build`, 查看**宿主工程**的`build`结果, 你会发现资源文件并没有被`build`到**宿主工程**中
-![以assets为例, 没有build进来](./doc/assets/打包资源文件和全局样式文件_1.png)
-![以assets为例, 期待的结果](./doc/assets/打包资源文件和全局样式文件_2.png)
 
+- 再次执行`npm run package`, **assets**和**theme**会打包到**Lib库**中
+
+- 但是如果你在**宿主工程**中执行`ng build`, 查看**宿主工程**的`build`结果, 你会发现资源文件并没有被`build`到**宿主工程**中
+
+![以assets为例, 没有build进来](./doc/assets/打包资源文件和全局样式文件_1.png)
+
+![以assets为例, 期待的结果](./doc/assets/打包资源文件和全局样式文件_2.png)
 
 - **重要的一步**: 在`angular.json`文件中增加以下内容, 让**宿主工程**可以使用**Lib库**中的资源文件和全局样式
 ![angular.json](./doc/assets/引入资源文件.jpg)
+
 - 重新再试一次, 是不是OK了?
 
-#### 最后
+## 最后
 
 - 示例工程代码稍后上传
 - TODO: 使用`link`的形式调试**Lib库**
 
 ---
 
-#### 参考资料
+## 参考资料
 > [Angular CLI](https://www.angular.cn/guide/creating-libraries)
 
 > [Library support in Angular CLI 6](https://www.jianshu.com/p/09ba8d35662e)
