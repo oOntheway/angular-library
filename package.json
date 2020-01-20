@@ -1,0 +1,46 @@
+{
+  "name": "my-app",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "build_lib": "ng build my-lib",
+    "npm_pack": "cd dist/my-lib && npm pack",
+    "copy_assets": "cp -rf projects/my-lib/src/assets dist/my-lib/assets",
+    "copy_theme": "cp -rf projects/my-lib/src/theme dist/my-lib/theme",
+    "package": "npm run build_lib && npm run copy_assets && npm run copy_theme && npm run npm_pack && npm i ./dist/my-lib/my-lib-0.0.1.tgz"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~8.2.14",
+    "@angular/common": "~8.2.14",
+    "@angular/compiler": "~8.2.14",
+    "@angular/core": "~8.2.14",
+    "@angular/forms": "~8.2.14",
+    "@angular/platform-browser": "~8.2.14",
+    "@angular/platform-browser-dynamic": "~8.2.14",
+    "@angular/router": "~8.2.14",
+    "my-lib": "file:dist/my-lib/my-lib-0.0.1.tgz",
+    "rxjs": "~6.4.0",
+    "tslib": "^1.10.0",
+    "zone.js": "~0.9.1"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.803.21",
+    "@angular-devkit/build-ng-packagr": "~0.803.21",
+    "@angular/cli": "~8.3.21",
+    "@angular/compiler-cli": "~8.2.14",
+    "@angular/language-service": "~8.2.14",
+    "@types/node": "~8.9.4",
+    "codelyzer": "^5.0.0",
+    "ng-packagr": "^5.4.0",
+    "ts-node": "~7.0.0",
+    "tsickle": "^0.37.0",
+    "tslint": "~5.15.0",
+    "typescript": "~3.5.3"
+  }
+}
